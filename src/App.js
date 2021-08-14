@@ -8,7 +8,7 @@ import { SnapshotByPortfolio } from './components/SnapshotByPortfolio';
 import { ContentSection } from './components/ContentSection';
 import { SelectInput } from './components/SelectInput';
 import { SearchInput } from './components/SearchInput';
-import { GlobalStyle } from './globalStyle';
+import { GlobalStyle } from './styles/globalStyle';
 import { MyFixedIncome } from './components/MyFixedIncome';
 
 const App = () => {
