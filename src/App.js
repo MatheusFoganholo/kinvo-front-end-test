@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { DataContextProvider } from './contexts/DataContext';
+import { Content } from './components/Content';
+import { ContentSection } from './components/ContentSection';
 import { Header } from './components/Header';
 import { Main } from './components/Main';
 import { Menu } from './components/Menu';
-import { Content } from './components/Content';
-import { SnapshotByPortfolio } from './components/SnapshotByPortfolio';
-import { ContentSection } from './components/ContentSection';
-import { SelectInput } from './components/SelectInput';
-import { SearchInput } from './components/SearchInput';
-import { GlobalStyle } from './styles/globalStyle';
 import { MyFixedIncome } from './components/MyFixedIncome';
+import { SearchInput } from './components/SearchInput';
+import { SelectInput } from './components/SelectInput';
+import { SnapshotByPortfolio } from './components/SnapshotByPortfolio';
+import { GlobalStyle } from './styles/globalStyle';
 
 const App = () => {
+  const dispatch = useDispatch();
   const [type, setType] = useState('OrdenarPor');
   const [search, setSearch] = useState('');
   const selectOptions = [
@@ -23,6 +25,16 @@ const App = () => {
     { name: '% Sobre Indexer', value: 'position.percentageOverIndexer' },
     { name: 'Data de expiração', value: 'due.daysUntilExpiration' },
   ];
+
+  const { api_data: apiData, loaded, success } = useSelector(
+    (state) => state.data,
+  );
+
+  useEffect(() => {
+    dispatch({ type: '@data/GET_REQUEST' });
+  }, []);
+
+  console.log(loaded, apiData, success);
 
   return (
     <DataContextProvider>
