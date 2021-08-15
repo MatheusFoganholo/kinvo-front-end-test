@@ -15,7 +15,7 @@ export const MyFixedIncome = ({ data, limit, search, type }) => {
         product.fixedIncome.name.toLowerCase().includes(search.toLowerCase()),
       );
 
-      if (type !== 'OrdenarPor') {
+      if (type !== 'OrderBy') {
         products.sort((a, b) =>
           a[type.split('.')[0]][type.split('.')[1]] >
           b[type.split('.')[0]][type.split('.')[1]]
@@ -26,7 +26,7 @@ export const MyFixedIncome = ({ data, limit, search, type }) => {
     } else {
       products = data;
 
-      if (type !== 'OrdenarPor') {
+      if (type !== 'OrderBy') {
         products = data.sort((a, b) =>
           a[type.split('.')[0]][type.split('.')[1]] >
           b[type.split('.')[0]][type.split('.')[1]]
@@ -58,49 +58,49 @@ export const MyFixedIncome = ({ data, limit, search, type }) => {
           <Item key={name}>
             <div>
               <h2>
-                Título <Info />
+                Title <Info />
               </h2>
               <section>
                 <h2>{name}</h2>
-                <Result color="#8A51BA" text="Classe">
+                <Result color="#8A51BA" text="Class">
                   {bondType}
                 </Result>
               </section>
             </div>
             <div>
               <h2>
-                Minha Posição <Info />
+                My Position <Info />
               </h2>
               <section>
-                <Result color="#38BFA0" text="Valor Inves.">
+                <Result color="#38BFA0" text="Value Appl.">
                   {valueApplied.toLocaleString('pt-br')}
                 </Result>
-                <Result color="#38BFA0" text="Saldo Bruto">
+                <Result color="#38BFA0" text="Gross Balance">
                   {equity.toLocaleString('pt-br')}
                 </Result>
                 <Result color="#38BFA0" text="Rent.">
                   {profitability.toLocaleString('pt-br')}%
                 </Result>
-                <Result color="#38BFA0" text="% da Cart.">
+                <Result color="#38BFA0" text="% of Wall.">
                   {portfolioPercentage.toLocaleString('pt-br')}%
                 </Result>
                 <Result color="#38BFA0" text={indexerLabel}>
                   {indexerValue.toLocaleString('pt-br')}
                 </Result>
-                <Result color="#38BFA0" text={`Sobre ${indexerLabel}`}>
+                <Result color="#38BFA0" text={`Over ${indexerLabel}`}>
                   {percentageOverIndexer.toLocaleString('pt-br')}%
                 </Result>
               </section>
             </div>
             <div>
               <h2>
-                Vencimento <Info />
+                Due Date <Info />
               </h2>
               <section>
-                <Result color="#008DCB" text="Data Venc.">
+                <Result color="#008DCB" text="Due Date.">
                   {date}
                 </Result>
-                <Result color="#008DCB" text="Dias até Venc.">
+                <Result color="#008DCB" text="Days Until Exp.">
                   {daysUntilExpiration}
                 </Result>
               </section>

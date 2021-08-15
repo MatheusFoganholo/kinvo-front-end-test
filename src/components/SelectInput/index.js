@@ -10,8 +10,8 @@ export const SelectInput = ({ options, onChange, defaultValue }) => {
       onChange={onChange}
       style={{ backgroundImage: `url(${Arrow})` }}
     >
-      <option value="OrdenarPor" disabled>
-        Ordenar Por
+      <option value="OrderBy" disabled>
+        Order By
       </option>
       {options.map((option) => (
         <option key={option.value} value={option.value}>

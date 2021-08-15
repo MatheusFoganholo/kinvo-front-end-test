@@ -17,95 +17,95 @@ export const Menu = () => {
     {
       title: (
         <span>
-          Resumo da
+          Wallet
           <br />
-          Carteira
+          Summary
         </span>
       ),
       icon: <WalletSummary />,
-      path: '/resumo-da-carteira',
+      path: '/wallet-summary',
     },
     {
       title: (
         <span>
-          Meus
+          My
           <br />
-          Produtos
+          Products
         </span>
       ),
       icon: <MyProducts />,
-      path: '/meus-produtos',
+      path: '/my-products',
     },
     {
       title: (
         <span>
-          Meus
+          My
           <br />
-          Proventos
+          Earnings
         </span>
       ),
       icon: <MyEarnings />,
-      path: '/meus-proventos',
+      path: '/my-earnings',
     },
     {
       title: (
         <span>
-          Classe
+          Asset
           <br />
-          de Ativos
+          Class
         </span>
       ),
       icon: <AssetClass />,
       path: '/',
       subMenu: [
-        { title: 'Ação', active: false },
-        { title: 'Fundo', active: false },
-        { title: 'Fundo Imobiliário', active: false },
-        { title: 'Fundo Renda Fixa', active: true },
+        { title: 'Actions', active: false },
+        { title: 'Fund', active: false },
+        { title: 'Real State Fund', active: false },
+        { title: 'Fixed Income Fund', active: true },
       ],
     },
     {
       title: (
         <span>
-          Rentabilidade
-          <br />
           Real
+          <br />
+          Rentability
         </span>
       ),
       icon: <RealRentability />,
-      path: '/rentabilidade-real',
+      path: '/real-rentability',
     },
     {
       title: (
         <span>
-          Projeção
+          Wallet
           <br />
-          da Carteira
+          Projection
         </span>
       ),
       icon: <WalletProjection />,
-      path: '/projecao-da-carteira',
+      path: '/wallet-projection',
     },
     {
       title: (
         <span>
-          Risco
-          <br />x Retorno
+          Risk
+          <br />x Return
         </span>
       ),
       icon: <RiskXReturn />,
-      path: '/risco-e-retorno',
+      path: '/risk-and-return',
     },
     {
       title: (
         <span>
-          Cobertura
+          FGC
           <br />
-          do FGC
+          Coverage
         </span>
       ),
       icon: <FGCCoverage />,
-      path: '/cobertura-do-fgc',
+      path: '/fgc-coverage',
     },
   ];
 
