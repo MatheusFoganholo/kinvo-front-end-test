@@ -1,23 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
-import { useData } from '../../contexts/DataContext';
 import { Wrapper, Value } from './styles';
 
-export const SnapshotByPortfolio = () => {
-  const {
-    data: {
-      data: { snapshotByPortfolio },
-    },
-  } = useData();
-
+export const SnapshotByPortfolio = ({ data }) => {
   return (
     <Wrapper>
       <div>
-        {snapshotByPortfolio ? (
+        {data ? (
           <>
             <span />
             <Value title="Saldo Bruto">
-              R$ {snapshotByPortfolio.equity.toLocaleString('pt-br')}
+              R$ {data.equity.toLocaleString('pt-br')}
             </Value>
           </>
         ) : (
@@ -30,11 +24,11 @@ export const SnapshotByPortfolio = () => {
         )}
       </div>
       <div>
-        {snapshotByPortfolio ? (
+        {data ? (
           <>
             <span />
             <Value title="Valor Aplicado">
-              R$ {snapshotByPortfolio.valueApplied.toLocaleString('pt-br')}
+              R$ {data.valueApplied.toLocaleString('pt-br')}
             </Value>
           </>
         ) : (
@@ -47,11 +41,11 @@ export const SnapshotByPortfolio = () => {
         )}
       </div>
       <div>
-        {snapshotByPortfolio ? (
+        {data ? (
           <>
             <span />
             <Value title="Resultado">
-              R$ {snapshotByPortfolio.equityProfit.toLocaleString('pt-br')}
+              R$ {data.equityProfit.toLocaleString('pt-br')}
             </Value>
           </>
         ) : (
@@ -64,11 +58,11 @@ export const SnapshotByPortfolio = () => {
         )}
       </div>
       <div>
-        {snapshotByPortfolio ? (
+        {data ? (
           <>
             <span />
             <Value title="Rentabilidade">
-              {snapshotByPortfolio.percentageProfit.toLocaleString('pt-br')}%
+              {data.percentageProfit.toLocaleString('pt-br')}%
             </Value>
           </>
         ) : (
@@ -81,11 +75,11 @@ export const SnapshotByPortfolio = () => {
         )}
       </div>
       <div>
-        {snapshotByPortfolio ? (
+        {data ? (
           <>
             <span />
             <Value title="CDI">
-              {snapshotByPortfolio.indexerValue.toLocaleString('pt-br')}%
+              {data.indexerValue.toLocaleString('pt-br')}%
             </Value>
           </>
         ) : (
@@ -98,14 +92,11 @@ export const SnapshotByPortfolio = () => {
         )}
       </div>
       <div>
-        {snapshotByPortfolio ? (
+        {data ? (
           <>
             <span />
             <Value title="% Sobre CDI">
-              {snapshotByPortfolio.percentageOverIndexer.toLocaleString(
-                'pt-br',
-              )}
-              %
+              {data.percentageOverIndexer.toLocaleString('pt-br')}%
             </Value>
           </>
         ) : (
@@ -119,4 +110,15 @@ export const SnapshotByPortfolio = () => {
       </div>
     </Wrapper>
   );
+};
+
+SnapshotByPortfolio.propTypes = {
+  data: PropTypes.shape({
+    equity: PropTypes.number,
+    equityProfit: PropTypes.number,
+    indexerValue: PropTypes.number,
+    percentageOverIndexer: PropTypes.number,
+    percentageProfit: PropTypes.number,
+    valueApplied: PropTypes.number,
+  }).isRequired,
 };

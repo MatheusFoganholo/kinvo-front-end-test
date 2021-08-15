@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { DataContextProvider } from './contexts/DataContext';
-import { Header } from './components/Header';
-import { Main } from './components/Main';
-import { Menu } from './components/Menu';
-import { Content } from './components/Content';
-import { SnapshotByPortfolio } from './components/SnapshotByPortfolio';
-import { ContentSection } from './components/ContentSection';
-import { SelectInput } from './components/SelectInput';
-import { SearchInput } from './components/SearchInput';
-import { GlobalStyle } from './styles/globalStyle';
-import { MyFixedIncome } from './components/MyFixedIncome';
+import {
+  Content,
+  ContentSection,
+  Header,
+  Main,
+  Menu,
+  MyFixedIncome,
+  SearchInput,
+  SelectInput,
+  SnapshotByPortfolio,
+} from './components';
+import { GlobalStyle } from './styles';
 
 const App = () => {
+  const dispatch = useDispatch();
   const [type, setType] = useState('OrdenarPor');
   const [search, setSearch] = useState('');
   const selectOptions = [
@@ -24,14 +28,22 @@ const App = () => {
     { name: 'Data de expiração', value: 'due.daysUntilExpiration' },
   ];
 
+  const { api_data: apiData } = useSelector((state) => state.data);
+
+  useEffect(() => {
+    dispatch({ type: '@data/GET_REQUEST' });
+  }, []);
+
   return (
     <DataContextProvider>
       <GlobalStyle />
-      <Header />
+      <Header data={apiData ? apiData.snapshotByPortfolio : {}} />
       <Main>
         <Menu />
         <Content title="Renda Fixa">
-          <SnapshotByPortfolio />
+          <SnapshotByPortfolio
+            data={apiData ? apiData.snapshotByPortfolio : {}}
+          />
           <ContentSection
             title="Minhas Rendas Fixas"
             filter={
@@ -48,7 +60,11 @@ const App = () => {
               </div>
             }
           >
-            <MyFixedIncome type={type} search={search} />
+            <MyFixedIncome
+              data={apiData ? apiData.snapshotByProduct : [{}]}
+              search={search}
+              type={type}
+            />
           </ContentSection>
         </Content>
       </Main>

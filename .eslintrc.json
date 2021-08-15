@@ -19,6 +19,7 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
+    "no-console": "off",
     "react/jsx-fragments": "off",
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "import/prefer-default-export": "off",
