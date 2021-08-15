@@ -26,24 +26,22 @@ const App = () => {
     { name: 'Data de expiração', value: 'due.daysUntilExpiration' },
   ];
 
-  const { api_data: apiData, loaded, success } = useSelector(
-    (state) => state.data,
-  );
+  const { api_data: apiData } = useSelector((state) => state.data);
 
   useEffect(() => {
     dispatch({ type: '@data/GET_REQUEST' });
   }, []);
 
-  console.log(loaded, apiData, success);
-
   return (
     <DataContextProvider>
       <GlobalStyle />
-      <Header />
+      <Header data={apiData ? apiData.snapshotByPortfolio : {}} />
       <Main>
         <Menu />
         <Content title="Renda Fixa">
-          <SnapshotByPortfolio />
+          <SnapshotByPortfolio
+            data={apiData ? apiData.snapshotByPortfolio : {}}
+          />
           <ContentSection
             title="Minhas Rendas Fixas"
             filter={
@@ -60,7 +58,11 @@ const App = () => {
               </div>
             }
           >
-            <MyFixedIncome type={type} search={search} />
+            <MyFixedIncome
+              data={apiData ? apiData.snapshotByProduct : [{}]}
+              search={search}
+              type={type}
+            />
           </ContentSection>
         </Content>
       </Main>

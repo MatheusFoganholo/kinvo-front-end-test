@@ -1,24 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
-import { useData } from '../../contexts/DataContext';
 import { ReactComponent as Info } from '../../assets/info.svg';
 import { ReactComponent as ArrowPage } from '../../assets/arrow-page.svg';
 import { Wrapper, Item, Result, Navigation } from './styles';
 
-export const MyFixedIncome = ({ type, search, limit }) => {
+export const MyFixedIncome = ({ data, limit, search, type }) => {
   const [currentPage, setCurrentPage] = useState(0);
-
-  const {
-    data: {
-      data: { snapshotByProduct },
-    },
-  } = useData();
 
   const renderProducts = () => {
     let products;
     if (search !== '') {
-      products = snapshotByProduct.filter((product) =>
+      products = data.filter((product) =>
         product.fixedIncome.name.toLowerCase().includes(search.toLowerCase()),
       );
 
@@ -31,10 +24,10 @@ export const MyFixedIncome = ({ type, search, limit }) => {
         );
       }
     } else {
-      products = snapshotByProduct;
+      products = data;
 
       if (type !== 'OrdenarPor') {
-        products = snapshotByProduct.sort((a, b) =>
+        products = data.sort((a, b) =>
           a[type.split('.')[0]][type.split('.')[1]] >
           b[type.split('.')[0]][type.split('.')[1]]
             ? 1
@@ -119,7 +112,7 @@ export const MyFixedIncome = ({ type, search, limit }) => {
 
   return (
     <Wrapper>
-      {snapshotByProduct
+      {data
         ? renderProducts()
         : Array.from(Array(limit), (e, i) => (
             <Item key={i}>
@@ -162,7 +155,7 @@ export const MyFixedIncome = ({ type, search, limit }) => {
               </div>
             </Item>
           ))}
-      {snapshotByProduct && snapshotByProduct.length > 5 && (
+      {data && data.length > 5 && (
         <Navigation>
           {currentPage !== 0 && (
             <button
@@ -174,27 +167,22 @@ export const MyFixedIncome = ({ type, search, limit }) => {
               <ArrowPage />
             </button>
           )}
-          {Array.from(
-            Array(Math.ceil(snapshotByProduct.length / limit)),
-            (e, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setCurrentPage(i)}
-                disabled={currentPage === i && 'active'}
-                className={currentPage === i ? 'active' : ''}
-              >
-                {i + 1}
-              </button>
-            ),
-          )}
-          {currentPage !== Math.ceil(snapshotByProduct.length / limit - 1) && (
+          {Array.from(Array(Math.ceil(data.length / limit)), (e, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setCurrentPage(i)}
+              disabled={currentPage === i && 'active'}
+              className={currentPage === i ? 'active' : ''}
+            >
+              {i + 1}
+            </button>
+          ))}
+          {currentPage !== Math.ceil(data.length / limit - 1) && (
             <button
               type="button"
               onClick={() => setCurrentPage(currentPage + 1)}
-              disabled={
-                currentPage === Math.ceil(snapshotByProduct.length / limit - 1)
-              }
+              disabled={currentPage === Math.ceil(data.length / limit - 1)}
               className="right"
             >
               <ArrowPage />
@@ -202,7 +190,7 @@ export const MyFixedIncome = ({ type, search, limit }) => {
           )}
         </Navigation>
       )}
-      {!snapshotByProduct && (
+      {!data && (
         <Navigation>
           <Skeleton width={35} height={35} />
           <Skeleton width={35} height={35} />
@@ -214,6 +202,30 @@ export const MyFixedIncome = ({ type, search, limit }) => {
 };
 
 MyFixedIncome.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      due: PropTypes.shape({
+        date: PropTypes.string,
+        daysUntilExpiration: PropTypes.number,
+      }),
+      fixedIncome: PropTypes.shape({
+        bondType: PropTypes.string,
+        name: PropTypes.string,
+        portfolioProductId: PropTypes.number,
+      }),
+      hasBalance: PropTypes.number,
+      position: PropTypes.shape({
+        equity: PropTypes.number,
+        indexerLabel: PropTypes.string,
+        indexerValue: PropTypes.number,
+        percentageOverIndexer: PropTypes.number,
+        portfolioPercentage: PropTypes.number,
+        profitability: PropTypes.number,
+        valueApplied: PropTypes.number,
+      }),
+      productHasQuotation: PropTypes.number,
+    }),
+  ).isRequired,
   type: PropTypes.string.isRequired,
   search: PropTypes.string.isRequired,
   limit: PropTypes.number,

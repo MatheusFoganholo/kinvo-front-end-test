@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
-import { useData } from '../../contexts/DataContext';
 import { ReactComponent as Logo } from '../../assets/logo-xd.svg';
 import { ReactComponent as GrossBalance } from '../../assets/gross-balance.svg';
 import { ReactComponent as ValueApplied } from '../../assets/value-applied.svg';
@@ -9,13 +9,7 @@ import { ReactComponent as Arrow } from '../../assets/arrow-2.svg';
 import { ReactComponent as Menu } from '../../assets/menu.svg';
 import { Wrapper, Info, Value } from './styles';
 
-export const Header = () => {
-  const {
-    data: {
-      data: { snapshotByPortfolio },
-    },
-  } = useData();
-
+export const Header = ({ data }) => {
   return (
     <Wrapper>
       <div>
@@ -27,8 +21,8 @@ export const Header = () => {
             <GrossBalance />
           </div>
           <h2>
-            {snapshotByPortfolio ? (
-              snapshotByPortfolio.equity.toLocaleString('pt-br')
+            {data && data.equity ? (
+              data.equity.toLocaleString('pt-br')
             ) : (
               <Skeleton width={90} />
             )}
@@ -39,8 +33,8 @@ export const Header = () => {
             <ValueApplied />
           </div>
           <h2>
-            {snapshotByPortfolio ? (
-              snapshotByPortfolio.valueApplied.toLocaleString('pt-br')
+            {data && data.valueApplied ? (
+              data.valueApplied.toLocaleString('pt-br')
             ) : (
               <Skeleton width={90} />
             )}
@@ -51,8 +45,8 @@ export const Header = () => {
             <Rentability />
           </div>
           <h2>
-            {snapshotByPortfolio ? (
-              `${snapshotByPortfolio.percentageProfit.toLocaleString('pt-br')}%`
+            {data && data.percentageProfit ? (
+              `${data.percentageProfit.toLocaleString('pt-br')}%`
             ) : (
               <Skeleton width={100} />
             )}
@@ -72,4 +66,15 @@ export const Header = () => {
       </Info>
     </Wrapper>
   );
+};
+
+Header.propTypes = {
+  data: PropTypes.shape({
+    equity: PropTypes.number,
+    equityProfit: PropTypes.number,
+    indexerValue: PropTypes.number,
+    percentageOverIndexer: PropTypes.number,
+    percentageProfit: PropTypes.number,
+    valueApplied: PropTypes.number,
+  }).isRequired,
 };
