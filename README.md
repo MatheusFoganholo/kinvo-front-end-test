@@ -1,56 +1,76 @@
-> ![Logo Kinvo](https://github.com/cbfranca/kinvo-front-end-test/blob/master/logo.svg)
+> ![Logo Kinvo Premium](https://raw.githubusercontent.com/MatheusFoganholo/kinvo-premium/1fa820f889eff21dd2b813ff5a777bc3503e0aeb/src/assets/logo-xd.svg)
 
-## Requisitos mínimos:
+<br />
+This repository stores the technical testing I performed for the full-fledged front-end developer position at Kinvo.
 
-### ○ Trainee/Estágio
+Result: I passed the test and later hired.
 
-- Permitir a filtragem de produtos na seção **Minhas Rendas Fixas** a partir de buscas realizadas no campo de texto; [x]
+**The requirements were:**
+<br/>
 
-### ○ Junior
+- Allow filtering of products in the section **My Fixed Income** from searches performed in the text field;
+- Display real data obtained from API: `https://60b6ad6f17d1dc0017b882fd.mockapi.io/mock/getFixedIncomeClassData`;
+- Allow ordering of products in the section **My Fixed Income** from the selector menu;
+- Make use of the library [React](https://pt-br.reactjs.org/);
+- Make use of the library [Styled Components](https://styled-components.com/);
+- Page products (5 per page) in the **My Fixed Income** section.
 
-- Todos os requisitos exigidos para o nível Estágio/Trainee; [x]
-- Exibir dados reais obtidos a partir da API [x] `https://60b6ad6f17d1dc0017b882fd.mockapi.io/mock/getFixedIncomeClassData`;
-- Permitir ordenação de produtos seção **Minhas Rendas Fixas** a partir do menu seletor; [x]
+**Note:** All requirements have been met.
 
-### ○ Pleno
+**Extras I chose to add**
 
-- Todos os requisitos exigidos para o nível Junior; [x]
-- Fazer uso da biblioteca [React](https://pt-br.reactjs.org/); [x]
-- Fazer uso da biblioteca [Styled Components](https://styled-components.com/); [x]
-- Paginar produtos (5 por página) na seção **Minhas Rendas Fixas**; [x]
-
-## Notas:
-
-- **! Importante !** O cumprimento dos requisitos solicitados para uma vaga em determinado nível não é garantia de aprovação. Focamos em avaliar a forma como os requisitos foram cumpridos.
-- Apesar da listagem de requisitos mínimos acima, caso não tenha tido tempo suficiente ou tenha se esbarrado em alguma dificuldade, entregue o desafio ainda que incompleto e conte-nos na descrição do pull request quais foram as suas maiores dificuldades.
-  Não se preocupe, avaliaremos ainda assim! :)
-- O protótipo é disponibilizado no formato de arquivo Adobe XD e está disponível em [/material](/material) ou a partir [deste link](https://xd.adobe.com/view/adc938b2-4a7a-4837-a849-37d803b83d26-f89a/); <strong>Esse link está diferente do layout.xd disponibilizado nos materiais.</strong>
-- Caso não tenha familiaridade com o Adobe XD, os ativos do protótipo podem ser exportados utilizando o atalho **CTRL + E** ou **CMD + E**. Caso o seu sistema operacional não seja compatível com o software, você pode acessar o protótipo também através do link citado no item anterior;
-- As bibliotecas e demais recursos sugeridos por nós em todos os níveis de exigência são meras sugestões (com exceção do React). Sinta-se a vontade para fazer a escolha que te deixa mais confortável e inclusive para sugerir ;);
-- Lembre-se de fazer um _fork_ deste repositório! Apenas cloná-lo vai te impedir de criar o _pull request_ e dificultar a entrega;
+- [Skeleton Loading](https://www.npmjs.com/package/react-loading-skeleton) while the api is not loaded;
+- Implementation of [Redux](https://redux.js.org/) in place of [React Context](https://pt-br.reactjs.org/docs/context.html) (added after test delivery);
+- [Redux-saga](https://redux-saga.js.org/) (added after test delivery).
 
 ---
 
-## Minhas considerações sobre o teste
+## How to run the application
 
-- Neste README não fala nada sobre o menu e o header ser funcional (ter rotas, redirects), então fiz como se o usuário já caísse na página que foi desenvolvida. (Somente visual).
-- O arquivo layout.xd é diferente do link do layout que está no README. Optei por fazer o layout do arquivo layout.xd pois era mais fácil para exportar os svgs.
-- Não consegui pegar a "imagem" de background do menu lateral no Adobe XD.
+You can access the application's web page by clicking here. Or if you want to run locally follow the steps below.
+
+It is noteworthy that the system used to develop was MacOS. You may have to adapt something in the code to run on your operating system.
 
 ---
 
-## Como rodar a aplicação
+## Run locally
 
-- Após clonado o repositório, e navegado para a pasta do mesmo, basta colocar no terminal:
+Clone the repository using:
 
 ```bash
-yarn install && yarn start
+git clone git@github.com:MatheusFoganholo/kinvo-premium.git
 ```
 
-O sistema utilizado para desenvolver foi o Mac OS. Se vocês tiverem algum problema para rodar por favor me avise.
+Navigate to the cloned project folder:
 
----
+```bash
+cd kinvo-premium
+```
 
-Agradeço a oportunidade de realizar esse teste. Grande abraço à todos.
+Install dependencies (using yarn):
 
-Att. Matheus Foganholo.
+```bash
+yarn install
+```
+
+Or (using npm):
+
+```bash
+npm install
+```
+
+Run the project (using yarn):
+
+```bash
+yarn start
+```
+
+Or (using npm):
+
+```bash
+npm start
+```
+
+I hope you enjoy!
+
+I keep making changes to practice new concepts and evolve this project because I like it a lot.
