@@ -27,7 +27,7 @@ Result: I passed the test and later hired.
 
 ## How to run the application
 
-You can access the application's web page by clicking here. Or if you want to run locally follow the steps below.
+You can access the application's web page by clicking [here](https://kinvo-premium.matheus.app/). Or if you want to run locally follow the steps below.
 
 It is noteworthy that the system used to develop was MacOS. You may have to adapt something in the code to run on your operating system.
 
