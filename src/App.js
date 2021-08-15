@@ -16,16 +16,16 @@ import { GlobalStyle } from './styles';
 
 const App = () => {
   const dispatch = useDispatch();
-  const [type, setType] = useState('OrdenarPor');
+  const [type, setType] = useState('OrderBy');
   const [search, setSearch] = useState('');
   const selectOptions = [
-    { name: 'Valor Investido', value: 'position.valueApplied' },
-    { name: 'Saldo Bruto', value: 'position.equity' },
-    { name: 'Rentabilidade', value: 'position.profitability' },
-    { name: '% da Carteira', value: 'position.portfolioPercentage' },
+    { name: 'Value Applied', value: 'position.valueApplied' },
+    { name: 'Gross Balance', value: 'position.equity' },
+    { name: 'Rentability', value: 'position.profitability' },
+    { name: '% of Wallet', value: 'position.portfolioPercentage' },
     { name: 'Indexer', value: 'position.indexerValue' },
-    { name: '% Sobre Indexer', value: 'position.percentageOverIndexer' },
-    { name: 'Data de expiração', value: 'due.daysUntilExpiration' },
+    { name: '% Over Indexer', value: 'position.percentageOverIndexer' },
+    { name: 'Expiration Date', value: 'due.daysUntilExpiration' },
   ];
 
   const { api_data: apiData } = useSelector((state) => state.data);
@@ -40,12 +40,12 @@ const App = () => {
       <Header data={apiData ? apiData.snapshotByPortfolio : {}} />
       <Main>
         <Menu />
-        <Content title="Renda Fixa">
+        <Content title="Fixed Income">
           <SnapshotByPortfolio
             data={apiData ? apiData.snapshotByPortfolio : {}}
           />
           <ContentSection
-            title="Minhas Rendas Fixas"
+            title="My Fixed Income"
             filter={
               <div style={{ display: 'flex' }}>
                 <SelectInput
