@@ -1,6 +1,5 @@
 const initialState = {
   api_data: {},
-  loaded: false,
   loading: false,
   success: null,
 };
@@ -16,7 +15,6 @@ export function data(state = initialState, action) {
       return {
         ...state,
         api_data: null,
-        loaded: true,
         loading: false,
         success: false,
       };
@@ -24,7 +22,6 @@ export function data(state = initialState, action) {
       return {
         ...state,
         api_data: action.payload,
-        loaded: true,
         loading: false,
         success: true,
       };
