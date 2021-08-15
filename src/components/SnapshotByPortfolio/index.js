@@ -10,7 +10,7 @@ export const SnapshotByPortfolio = ({ data }) => {
         {data ? (
           <>
             <span />
-            <Value title="Saldo Bruto">
+            <Value title="Gross Balance">
               R$ {data.equity.toLocaleString('pt-br')}
             </Value>
           </>
@@ -27,7 +27,7 @@ export const SnapshotByPortfolio = ({ data }) => {
         {data ? (
           <>
             <span />
-            <Value title="Valor Aplicado">
+            <Value title="Value Applied">
               R$ {data.valueApplied.toLocaleString('pt-br')}
             </Value>
           </>
@@ -44,7 +44,7 @@ export const SnapshotByPortfolio = ({ data }) => {
         {data ? (
           <>
             <span />
-            <Value title="Resultado">
+            <Value title="Result">
               R$ {data.equityProfit.toLocaleString('pt-br')}
             </Value>
           </>
@@ -61,7 +61,7 @@ export const SnapshotByPortfolio = ({ data }) => {
         {data ? (
           <>
             <span />
-            <Value title="Rentabilidade">
+            <Value title="Rentability">
               {data.percentageProfit.toLocaleString('pt-br')}%
             </Value>
           </>
@@ -95,7 +95,7 @@ export const SnapshotByPortfolio = ({ data }) => {
         {data ? (
           <>
             <span />
-            <Value title="% Sobre CDI">
+            <Value title="% Over CDI">
               {data.percentageOverIndexer.toLocaleString('pt-br')}%
             </Value>
           </>
