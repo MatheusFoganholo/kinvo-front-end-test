@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DataContextProvider } from './contexts/DataContext';
-import { Content } from './components/Content';
-import { ContentSection } from './components/ContentSection';
-import { Header } from './components/Header';
-import { Main } from './components/Main';
-import { Menu } from './components/Menu';
-import { MyFixedIncome } from './components/MyFixedIncome';
-import { SearchInput } from './components/SearchInput';
-import { SelectInput } from './components/SelectInput';
-import { SnapshotByPortfolio } from './components/SnapshotByPortfolio';
-import { GlobalStyle } from './styles/globalStyle';
+import {
+  Content,
+  ContentSection,
+  Header,
+  Main,
+  Menu,
+  MyFixedIncome,
+  SearchInput,
+  SelectInput,
+  SnapshotByPortfolio,
+} from './components';
+import { GlobalStyle } from './styles';
 
 const App = () => {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import axios from '../../../services/axios';
+import { axios } from '../../../services';
 import { failData, fillData } from './actions';
 
 const request = async () => {
