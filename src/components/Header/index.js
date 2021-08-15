@@ -16,7 +16,7 @@ export const Header = ({ data }) => {
         <Logo />
       </div>
       <Info>
-        <Value title="Saldo Bruto">
+        <Value title="Gross Balance">
           <div>
             <GrossBalance />
           </div>
@@ -28,7 +28,7 @@ export const Header = ({ data }) => {
             )}
           </h2>
         </Value>
-        <Value title="Valor Aplicado">
+        <Value title="Value Applied">
           <div>
             <ValueApplied />
           </div>
@@ -40,7 +40,7 @@ export const Header = ({ data }) => {
             )}
           </h2>
         </Value>
-        <Value title="Rentabilidade">
+        <Value title="Rentability">
           <div>
             <Rentability />
           </div>
@@ -52,11 +52,11 @@ export const Header = ({ data }) => {
             )}
           </h2>
         </Value>
-        <Value title="Carteira" color="#5D41AC" bold cursorPointer>
+        <Value title="Wallet" color="#5D41AC" bold cursorPointer>
           <div>
             <Arrow />
           </div>
-          <h2>Minha Carteira</h2>
+          <h2>My Wallet</h2>
         </Value>
         <Value color="#5D41AC" cursorPointer>
           <div>
